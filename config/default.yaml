@@ -1,0 +1,100 @@
+# FinDocs Configuration
+
+# Paths
+paths:
+  docs_root: "docs"
+  artifacts_root: "artifacts"
+  registry_dir: "artifacts/registry"
+  chunks_dir: "artifacts/chunks"
+  tables_dir: "artifacts/tables"
+  index_dir: "artifacts/index"
+  sparse_dir: "artifacts/sparse"
+  models_cache: "artifacts/models"
+
+# GPU
+device:
+  gpu_id: 0
+  use_cuda: true
+
+# Parsing
+parsing:
+  pdf_extractor: "pymupdf+pdfplumber"  # unstructured | pymupdf+pdfplumber
+
+# Tables
+tables:
+  enabled: true
+  extractor: "pdfplumber"  # pdfplumber | unstructured
+  serialize_format: "markdown"
+
+# Chunking
+chunking:
+  target_tokens: 300
+  overlap_tokens: 60
+  respect_structure: true
+  similarity_threshold: 0.7  # for semantic boundary detection
+
+# Sentiment Analysis (FinBERT)
+sentiment:
+  model: "yiyanghkust/finbert-tone"
+  batch_size: 16
+  max_length: 512
+
+# Embeddings (Dense)
+embeddings:
+  model: "intfloat/e5-large-v2"
+  batch_size: 32
+  normalize: true
+  dimension: 1024
+
+# BM25 (Sparse)
+bm25:
+  enabled: true
+  k1: 0.9
+  b: 0.4
+  top_k: 100
+
+# Cross-encoder Re-ranking
+reranker:
+  enabled: true
+  model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  batch_size: 32
+  top_n: 200  # re-rank top N candidates
+
+# Hybrid Retrieval
+hybrid:
+  enabled: true
+  fusion_method: "rrf"  # rrf | weighted
+  rrf_k: 60
+  dense_weight: 0.5
+  sparse_weight: 0.5
+
+# FAISS Index
+faiss:
+  index_type: "IndexFlatIP"  # cosine via normalized vectors
+  metric: "inner_product"
+
+# Extraction
+extraction:
+  mode: "remote"  # remote | local
+  primary_endpoint: "http://localhost:8000"
+  fallback_endpoint: null
+  extraction_version: "v1"
+  max_retries: 2
+
+ollama:
+  base_url: "http://127.0.0.1:11434"
+  model: "llama3"
+  temperature: 0.0
+  max_new_tokens: 512
+  timeout: 120.0
+
+active_learning:
+  sentiment_threshold: 0.3
+  extraction_threshold: 0.3
+  enqueue_limit: 100
+  
+# Logging
+logging:
+  level: "INFO"
+  structured: true
+

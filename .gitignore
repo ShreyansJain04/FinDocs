@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# Artifacts
+artifacts/
+*.parquet
+*.faiss
+*.pkl
+*.npy
+
+# IDE
+.vscode/
+.vscode-server/
+.idea/
+.cursor/
+.cursor-server/
+.windsurf-server/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# NLTK data (downloaded at runtime)
+nltk_data/
+
+# Sample/uploaded documents (user-specific)
+docs/
+
+# Benchmark results (temporary)
+benchmark_results.txt
+
+# Development environment specific
+.factory/
+.lightning_studio/
+.streamlit/
+.bash_history
+.cursor-server
+.vscode-server
+.windsurf-server
+
