@@ -63,15 +63,6 @@ Alternative considered: `BAAI/bge-large-en-v1.5` (comparable performance, can sw
 
 **Evidence**: BEIR benchmark shows hybrid outperforms either alone by 5-15% on domain-specific tasks.
 
-### Why Reciprocal Rank Fusion (RRF)?
-
-**Robustness**: RRF is score-agnostic:
-- Dense scores (cosine ∈ [-1, 1]) and BM25 scores (unbounded) have different scales
-- RRF uses rank positions → no score normalization required
-- Simple, stable, outperforms weighted fusion in most benchmarks
-
-Formula: `score(doc) = Σ 1/(k + rank_i)` where `k=60` (standard tuning).
-
 ### Why cross-encoder re-ranking?
 
 **Precision**: Bi-encoders (E5, BM25) are fast but limited to independent encoding. Cross-encoders:
