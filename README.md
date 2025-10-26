@@ -11,7 +11,6 @@ A production-grade pipeline for ingesting financial documents (earnings calls, f
 - **Hybrid retrieval**:
   - Dense: E5-large-v2 embeddings + FAISS (cosine similarity)
   - Sparse: BM25 for keyword/ticker matching
-  - Fusion: Reciprocal Rank Fusion (RRF) or weighted score fusion
 - **Cross-encoder re-ranking**: MiniLM reranker for precision@k
 - **Idempotent ingestion**: Content-hash based deduplication
 - **GPU-accelerated**: Single T4/L4 GPU support
